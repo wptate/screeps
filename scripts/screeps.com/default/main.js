@@ -5,8 +5,13 @@ var roleRepairer = require('role.repairer');
 
 var maxHarvesters =7;
 var maxUpgraders = 1;
-var maxBuilders = 1;
+var maxBuilders = 2;
 var maxRepairers = 1;
+
+var bodyHarvesters = [WORK,WORK,CARRY,MOVE,MOVE];
+var bodyUpgraders = [WORK,CARRY,MOVE];
+var bodyBuilders = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
+var bodyRepairers = [WORK,CARRY,MOVE];
 
 module.exports.loop = function () {
 
@@ -34,34 +39,41 @@ module.exports.loop = function () {
     }
 
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-
     if(harvesters.length < maxHarvesters) {
         var newName = 'Harvester' + Game.time;
-        Game.spawns['Spawn1'].spawnCreep([WORK,WORK,CARRY,MOVE,MOVE], newName, 
+        Game.spawns['Spawn1'].spawnCreep(bodyHarvesters, newName, 
             {memory: {role: 'harvester'}});
     }
     
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
 
-    if(upgraders.length < maxUpgraders) {
+    if(upgraders.length < maxUpgraders && 
+        Game.spawns['Spawn1'].room.energyAvailable > (bodyUpgraders.length * 50 * 1.5) && 
+        (maxHarvesters - harvesters.length) <= (maxHarvesters / 2)) {
         var newName = 'Upgrader' + Game.time;
-        Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
+        Game.spawns['Spawn1'].spawnCreep(bodyUpgraders, newName, 
             {memory: {role: 'upgrader'}});
     }
     
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
 
-    if(builders.length < maxBuilders) {
+    if(builders.length < maxBuilders && 
+        Game.spawns['Spawn1'].room.energyAvailable > (bodyBuilders.length * 50 * 1.5) && 
+        (maxHarvesters - harvesters.length) <= (maxHarvesters / 2)) {
+            console.log("here01");
         var newName = 'Builder' + Game.time;
-        Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
+        Game.spawns['Spawn1'].spawnCreep(bodyBuilders, newName, 
             {memory: {role: 'builder'}});
     }
     
-    //var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
+    var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
 
-    if(repairers.length < maxRepairers) {
+console.log("hav" + (maxHarvesters - harvesters.length));
+    if(repairers.length < maxRepairers && 
+        Game.spawns['Spawn1'].room.energyAvailable > (bodyRepairers.length * 50 * 1.5) && 
+        (maxHarvesters - harvesters.length) <= (maxHarvesters / 2)) {
         var newName = 'Repairer' + Game.time;
-        Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
+        Game.spawns['Spawn1'].spawnCreep(bodyRepairers, newName, 
             {memory: {role: 'repairer'}});
     }
     

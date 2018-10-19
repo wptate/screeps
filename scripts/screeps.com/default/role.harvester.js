@@ -10,15 +10,16 @@ var roleHarvester = {
                 var sources = creep.room.find(FIND_SOURCES);
                 
                 var switchSource = _.random(0, 4) == 0;
-                if (sourcePriority.getPriority(sources[2]) > sourcePriority.getPriority(sources[0])) {
+                //0 local, 1 swamp, 2 enemy, 3 canyon
+                if (sourcePriority.getPriority(sources[3]) > sourcePriority.getPriority(sources[0])) {
                     if (switchSource) {
                         used = sources[0];
                     } else {
-                        used = sources[2];
+                        used = sources[3];
                     }
                 } else {
                     if (switchSource) {
-                        used = sources[2];
+                        used = sources[3];
                     } else {
                         used = sources[0];
                     }
