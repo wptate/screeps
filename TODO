@@ -7,9 +7,13 @@ auto-replace dying creeps(health or ttl)
 	Need to check max count of roles and ensure we don't overload on certain types.
 	Should also check to ensure we don't NOT build certain types at times
 	correctly calculate cost of build
-	split spawning from main
+	Split spawning from main
+	Start with smaller bodies, build up from there
 Allow builders/etc to suppliment work when available, prioritize role but offer secondary roles
 	allow role switching, roles available and current role for performing duties.  Switch when required or when idle
 prioritize energy locations for harvesters
 build storage, allow harvester to harvest/store, movers ship from storage to perm storage
 Calculate balance of upgrade/build with harvesting.  When harvest below threshold, stop/don't spawn/etc
+Merge roles into single file, reduce duplication
+Link  IDE to source for reference
+Add distance factor to priority

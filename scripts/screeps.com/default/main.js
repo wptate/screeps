@@ -3,12 +3,12 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 
-var maxHarvesters =7;
+var maxHarvesters = 10;
 var maxUpgraders = 1;
 var maxBuilders = 2;
 var maxRepairers = 1;
 
-var bodyHarvesters = [WORK,WORK,CARRY,MOVE,MOVE];
+var bodyHarvesters = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
 var bodyUpgraders = [WORK,CARRY,MOVE];
 var bodyBuilders = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
 var bodyRepairers = [WORK,CARRY,MOVE];
@@ -39,6 +39,7 @@ module.exports.loop = function () {
     }
 
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    //console.log("harv" + harvesters.length);
     if(harvesters.length < maxHarvesters) {
         var newName = 'Harvester' + Game.time;
         Game.spawns['Spawn1'].spawnCreep(bodyHarvesters, newName, 
@@ -48,7 +49,7 @@ module.exports.loop = function () {
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
 
     if(upgraders.length < maxUpgraders && 
-        Game.spawns['Spawn1'].room.energyAvailable > (bodyUpgraders.length * 50 * 1.5) && 
+        Game.spawns['Spawn1'].room.energyAvailable > (bodyUpgraders.length * 50 * 2) &&
         (maxHarvesters - harvesters.length) <= (maxHarvesters / 2)) {
         var newName = 'Upgrader' + Game.time;
         Game.spawns['Spawn1'].spawnCreep(bodyUpgraders, newName, 
@@ -60,7 +61,6 @@ module.exports.loop = function () {
     if(builders.length < maxBuilders && 
         Game.spawns['Spawn1'].room.energyAvailable > (bodyBuilders.length * 50 * 1.5) && 
         (maxHarvesters - harvesters.length) <= (maxHarvesters / 2)) {
-            console.log("here01");
         var newName = 'Builder' + Game.time;
         Game.spawns['Spawn1'].spawnCreep(bodyBuilders, newName, 
             {memory: {role: 'builder'}});
@@ -68,9 +68,8 @@ module.exports.loop = function () {
     
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
 
-console.log("hav" + (maxHarvesters - harvesters.length));
     if(repairers.length < maxRepairers && 
-        Game.spawns['Spawn1'].room.energyAvailable > (bodyRepairers.length * 50 * 1.5) && 
+        Game.spawns['Spawn1'].room.energyAvailable > (bodyRepairers.length * 50 * 2) &&
         (maxHarvesters - harvesters.length) <= (maxHarvesters / 2)) {
         var newName = 'Repairer' + Game.time;
         Game.spawns['Spawn1'].spawnCreep(bodyRepairers, newName, 

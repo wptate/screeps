@@ -11,15 +11,15 @@ var roleHarvester = {
                 
                 var switchSource = _.random(0, 4) == 0;
                 //0 local, 1 swamp, 2 enemy, 3 canyon
-                if (sourcePriority.getPriority(sources[3]) > sourcePriority.getPriority(sources[0])) {
+                if (sourcePriority.getPriority(sources[1]) > sourcePriority.getPriority(sources[0])) {
                     if (switchSource) {
                         used = sources[0];
                     } else {
-                        used = sources[3];
+                        used = sources[1];
                     }
                 } else {
                     if (switchSource) {
-                        used = sources[3];
+                        used = sources[1];
                     } else {
                         used = sources[0];
                     }
@@ -28,7 +28,6 @@ var roleHarvester = {
 	        } else {
 	            used = Game.getObjectById(creep.memory.harvestSource);
 	        }
-            //used = sources[0];
             if(creep.harvest(used) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(used, {visualizePathStyle: {stroke: '#ffaa00'}});
             }
