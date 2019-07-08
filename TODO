@@ -17,3 +17,13 @@ Calculate balance of upgrade/build with harvesting.  When harvest below threshol
 Merge roles into single file, reduce duplication
 Link  IDE to source for reference
 Add distance factor to priority
+
+
+
+var groups = _.groupBy(Game.creeps, (c) => { return c.memory.role; });
+{
+    harvester: [Creep, Creep, Creep],
+    builder: [Creep],
+    upgrader: [Creep, Creep, Creep]
+}
+

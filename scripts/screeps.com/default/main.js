@@ -1,7 +1,9 @@
+var constants = require('constant.vars');
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
+var handleSpawn = require('spawn.scale');
 
 var maxHarvesters = 10;
 var maxUpgraders = 1;
@@ -15,6 +17,16 @@ var bodyRepairers = [WORK,CARRY,MOVE];
 
 module.exports.loop = function () {
 
+    handleSpawn.scale('Spawn1');
+    
+    for(var name in Memory.creeps) {
+        if(!Game.creeps[name]) {
+            delete Memory.creeps[name];
+            console.log('Clearing non-existing creep memory:', name);
+        }
+    }
+  
+/*
     var tower = Game.getObjectById('14eb13247995e5f7380a9f42');
     if(tower) {
         var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -29,15 +41,7 @@ module.exports.loop = function () {
             tower.attack(closestHostile);
         }
     }
-    
-    
-    for(var name in Memory.creeps) {
-        if(!Game.creeps[name]) {
-            delete Memory.creeps[name];
-            console.log('Clearing non-existing creep memory:', name);
-        }
-    }
-
+  
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     //console.log("harv" + harvesters.length);
     if(harvesters.length < maxHarvesters) {
@@ -75,7 +79,8 @@ module.exports.loop = function () {
         Game.spawns['Spawn1'].spawnCreep(bodyRepairers, newName, 
             {memory: {role: 'repairer'}});
     }
-    
+  */ 
+/* 
     if(Game.spawns['Spawn1'].spawning) { 
         var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
         Game.spawns['Spawn1'].room.visual.text(
@@ -84,7 +89,6 @@ module.exports.loop = function () {
             Game.spawns['Spawn1'].pos.y, 
             {align: 'left', opacity: 0.8});
     }
-
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         if(creep.memory.role == 'harvester') {
@@ -99,5 +103,5 @@ module.exports.loop = function () {
         if(creep.memory.role == 'repairer') {
             roleRepairer.run(creep);
         }
-    }
+    }*/
 }

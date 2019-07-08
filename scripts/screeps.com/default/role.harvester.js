@@ -1,4 +1,9 @@
+var constants = require('constant.vars');
 var sourcePriority = require('priority.source');
+
+
+
+
 
 var roleHarvester = {
 
@@ -45,6 +50,15 @@ var roleHarvester = {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
+        }
+	},
+	
+    spawn: function(spawnName, maxHarvesters, roomSize, y, z) {
+	    var roleTxt = 'harvester';
+        var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == roleTxt);
+	    if(harvesters.length < maxHarvesters) {
+            var newName = 'Harvester' + Game.time;
+            Game.spawns[spawnName].spawnCreep(constants.bodyHarvesters[roomSize], newName, {memory: {role: roleTxt}});
         }
 	}
 };
