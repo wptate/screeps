@@ -24,6 +24,15 @@ var roleUpgrader = {
             	creep.memory.upgrading = true;
             }
         }
+	},
+	
+    spawn: function(spawnName, maxUpgraders, roomSize, y, z) {
+	    var roleTxt = 'upgrader';
+        var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == roleTxt);
+	    if(upgrader.length < maxUpgraders) {
+            var newName = 'Upgrader' + Game.time;
+            Game.spawns[spawnName].spawnCreep(global.bodyUpgraders[roomSize], newName, {memory: {role: roleTxt}});
+        }
 	}
 };
 

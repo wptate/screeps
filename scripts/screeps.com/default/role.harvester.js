@@ -58,7 +58,10 @@ var roleHarvester = {
         var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == roleTxt);
 	    if(harvesters.length < maxHarvesters) {
             var newName = 'Harvester' + Game.time;
-            Game.spawns[spawnName].spawnCreep(constants.bodyHarvesters[roomSize], newName, {memory: {role: roleTxt}});
+			console.log("spawning " + newName);
+            //Game.spawns[spawnName].spawnCreep(global.bodyHarvesters[roomSize], newName, {memory: {role: roleTxt}});
+			Game.spawns[spawnName].spawnCreep([WORK, CARRY, MOVE], newName, {role: roleTxt});
+			//Game.spawns[spawnName].spawnCreep( [WORK, CARRY, MOVE], 'Harvester1' );
         }
 	}
 };

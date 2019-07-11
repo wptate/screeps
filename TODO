@@ -18,7 +18,7 @@ Merge roles into single file, reduce duplication
 Link  IDE to source for reference
 Add distance factor to priority
 
-
+Add garbageCollection/cleanup module
 
 var groups = _.groupBy(Game.creeps, (c) => { return c.memory.role; });
 {

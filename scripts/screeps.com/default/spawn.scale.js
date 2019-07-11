@@ -8,9 +8,9 @@ var handleSpawn = {
         
     scale: function (spawnName) {
         if (!Game.spawns[spawnName]) {
+			console.log("failed to spawn from " + spawnName);
             return;
         }
-		console.log('here01');
         //defendSpawn(spawnName);
         
         //handle creeps

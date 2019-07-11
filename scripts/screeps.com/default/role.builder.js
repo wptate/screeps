@@ -1,3 +1,5 @@
+var constants = require('constant.vars');
+
 var roleBuilder = {
 
     /** @param {Creep} creep **/
@@ -30,6 +32,15 @@ var roleBuilder = {
                 creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
             }*/
 	    }
+	},
+	
+    spawn: function(spawnName, maxBuilders, roomSize, y, z) {
+	    var roleTxt = 'builder';
+        var builders = _.filter(Game.creeps, (creep) => creep.memory.role == roleTxt);
+	    if(builders.length < maxBuilders) {
+            var newName = 'Builder' + Game.time;
+            Game.spawns[spawnName].spawnCreep(global.bodyBuilders[roomSize], newName, {memory: {role: roleTxt}});
+        }
 	}
 };
 

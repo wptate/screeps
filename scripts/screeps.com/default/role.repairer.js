@@ -44,6 +44,15 @@ var roleRepairer = {
               creep.moveTo(spawn.pos, {visualizePathStyle: {stroke: '#ffaa00'}});
             }
 	    }
+	},
+	
+    spawn: function(spawnName, maxRepairers, roomSize, y, z) {
+	    var roleTxt = 'repairer';
+        var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == roleTxt);
+	    if(repairers.length < maxRepairers) {
+            var newName = 'Repairer' + Game.time;
+            Game.spawns[spawnName].spawnCreep(global.bodyRepairers[roomSize], newName, {memory: {role: roleTxt}});
+        }
 	}
 };
 
