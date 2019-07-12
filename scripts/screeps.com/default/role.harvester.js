@@ -60,8 +60,8 @@ var roleHarvester = {
             var newName = 'Harvester' + Game.time;
 			console.log("spawning " + newName);
             //Game.spawns[spawnName].spawnCreep(global.bodyHarvesters[roomSize], newName, {memory: {role: roleTxt}});
-			Game.spawns[spawnName].spawnCreep([WORK, CARRY, MOVE], newName, {role: roleTxt});
-			//Game.spawns[spawnName].spawnCreep( [WORK, CARRY, MOVE], 'Harvester1' );
+			Game.spawns[spawnName].spawnCreep([WORK, CARRY, MOVE], 1, {memory: {role: roleTxt}});
+			
         }
 	}
 };
