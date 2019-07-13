@@ -9,9 +9,9 @@ var roleHarvester = {
     /** @param {Creep} creep **/
     run: function(creep) {
 	    if(creep.carry.energy < creep.carryCapacity) {
-	        var used = sourceSwitch.getSource(creep);
-            if(creep.harvest(used) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(used, {visualizePathStyle: {stroke: '#ffaa00'}});
+	        var targetSource = Game.getObjectById(sourceSwitch.getSource(creep));
+			if(creep.harvest(targetSource) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(targetSource, {visualizePathStyle: {stroke: '#ffaa00'}});
             }
         }
         else {

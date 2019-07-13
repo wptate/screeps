@@ -1,14 +1,7 @@
-Link to github and autosync
-auto-build creeps
 auto-replace dying creeps(health or ttl)
 	Determine ttl and make sure to drop off/finish task prior to death, then kick off new spawn
-	Delete memory at death
-	auto-name new units
-	Need to check max count of roles and ensure we don't overload on certain types.
-	Should also check to ensure we don't NOT build certain types at times
 	correctly calculate cost of build
 	Split spawning from main
-	Start with smaller bodies, build up from there
 Allow builders/etc to suppliment work when available, prioritize role but offer secondary roles
 	allow role switching, roles available and current role for performing duties.  Switch when required or when idle
 prioritize energy locations for harvesters

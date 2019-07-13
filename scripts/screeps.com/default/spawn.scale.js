@@ -14,7 +14,8 @@ var handleSpawn = {
         //defendSpawn(spawnName);
         
         //handle creeps
-        if (Object.keys(Game.creeps).length < 4) { //start up
+        // Need to detect spawn cost/energy available and not attempt spawn until clear
+		if (Object.keys(Game.creeps).length < 4) { //start up
             //emergency!
 			if (Game.spawns[spawnName].spawning == null) {
             	roleHarvester.spawn(spawnName, 4, 'small', 0, 0);

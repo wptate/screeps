@@ -1,11 +1,4 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('priority');
- * mod.thing == 'a thing'; // true
- */
+//Need to determine if source is near enemy, avoid.  Prioritize source close, and deprioritize spawns in swamp.
  var sourcePriority = {
     getPriority: function(source) {
         let priority;

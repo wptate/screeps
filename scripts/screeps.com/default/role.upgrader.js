@@ -30,9 +30,9 @@ var roleUpgrader = {
             	creep.moveTo(spawn.pos, {visualizePathStyle: {stroke: '#ffaa00'}});
             	creep.memory.upgrading = true;
             } else {
-				var used = sourceSwitch.getSource(creep);
-				if(creep.harvest(used) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(used, {visualizePathStyle: {stroke: '#ffaa00'}});
+				var targetSource = Game.getObjectById(sourceSwitch.getSource(creep));
+				if(creep.harvest(targetSource) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(targetSource, {visualizePathStyle: {stroke: '#ffaa00'}});
 				}
 			}
         }

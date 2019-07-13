@@ -27,7 +27,7 @@ var roleBuilder = {
 				creep.moveTo(Game.flags[flagName]);
 			}
 	    } else {
-	        var spawn = Game.spawns['Spawn1'];
+	        var spawn = Game.spawns[spawnName];
             if(creep.withdraw(spawn, RESOURCE_ENERGY, (creep.carryCapacity - creep.carry)) == ERR_NOT_IN_RANGE) {
               creep.moveTo(spawn.pos, {visualizePathStyle: {stroke: '#ffaa00'}});
             }
