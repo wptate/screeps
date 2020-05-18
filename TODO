@@ -20,3 +20,4 @@ var groups = _.groupBy(Game.creeps, (c) => { return c.memory.role; });
     upgrader: [Creep, Creep, Creep]
 }
 
+Testing update to github to screeps
