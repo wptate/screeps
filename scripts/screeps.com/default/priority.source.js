@@ -40,7 +40,7 @@
         var highestId;
         for (var i = 0; i < sources.length; i++) {
             var thisPriority = this.getPriority(sources[i]);
-            Memory.source[sources[i].id].priority = thisPriority;
+            sources[i].memory.priority = thisPriority;
             if (highestId == undefined || thisPriority > highestPri) {
                 highestId = sources[i].id;
                 highestPri = thisPriority;
@@ -52,7 +52,7 @@
     recalculatePriorities : function(creep) {
         var sources = creep.room.find(FIND_SOURCES);
         for (var i = 0; i < sources.length; i++) {
-            Memory.source[sources[i].id].priority = this.getPriority(sources[i]);
+            sources[i].memory.priority = this.getPriority(sources[i]);
         }
     }
 };
