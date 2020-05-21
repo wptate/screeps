@@ -33,7 +33,7 @@
     },
 
     getHighestPriority : function(creep) {
-        var = creep.room.find(FIND_SOURCES);
+        var sources = creep.room.find(FIND_SOURCES);
         //points.sort(function(a, b){return a - b});
         //Memory.source.sort(function(a, b){});
         var highestPri;
@@ -46,7 +46,7 @@
                 highestPri = thisPriority;
             }
         }
-        return highest;
+        return highestId;
     },
 
     recalculatePriorities : function(creep) {
