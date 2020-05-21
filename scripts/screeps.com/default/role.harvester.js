@@ -13,8 +13,7 @@ var roleHarvester = {
 			if(creep.harvest(targetSource) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(targetSource, {visualizePathStyle: {stroke: '#ffaa00'}});
             }
-        }
-        else {
+        } else {
             var targets = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_EXTENSION ||
